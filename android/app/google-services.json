@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1009273171314",
+    "project_id": "wordier-aeb03",
+    "storage_bucket": "wordier-aeb03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009273171314:android:dd0ec40b887f5e6df641eb",
+        "android_client_info": {
+          "package_name": "com.example.wordier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009273171314-friem8li47gd109tp2ovbtpc0bu05c90.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc_rpHRXacOq_mhEbVuCBpslxX_bpj0NI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009273171314-friem8li47gd109tp2ovbtpc0bu05c90.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1009273171314-fcj79tcbrcrm3b9fdkjkgv86iv07gdfb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.wordier"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
