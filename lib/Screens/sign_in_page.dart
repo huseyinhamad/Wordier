@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wordier/controllers/auth.dart';
 import 'package:wordier/screens/sign_up_page.dart';
 import 'package:wordier/widgets/auth_button.dart';
@@ -105,15 +106,11 @@ class _SignInPageState extends State<SignInPage> {
                       text: 'Sign In',
                     ),
                     CustomRichText(
-                      description: "Don't already have an account? ",
-                      text: "Sign Up",
-                      onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SignUpPage()));
-                      },
-                    ),
+                        description: "Don't already have an account? ",
+                        text: "Sign Up",
+                        onTap: () {
+                          Get.offAll(() => const SignUpPage());
+                        }),
                   ],
                 ),
               ),

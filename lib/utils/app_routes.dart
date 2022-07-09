@@ -6,8 +6,8 @@ import 'package:wordier/screens/sign_up_page.dart';
 class AppRoutes {
   AppRoutes._();
   static final routes = [
-    GetPage(name: '/home', page: () => const HomePage()),
-    GetPage(name: '/signin', page: () => const SignInPage()),
-    GetPage(name: '/signup', page: () => const SignUpPage()),
+    GetPage(name: '/HomePage', page: () => const HomePage()),
+    GetPage(name: '/SignInPage', page: () => const SignInPage()),
+    GetPage(name: '/SignUpPage', page: () => const SignUpPage()),
   ];
 }

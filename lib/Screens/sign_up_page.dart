@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wordier/controllers/auth.dart';
 import 'package:wordier/screens/sign_in_page.dart';
 import 'package:wordier/styles/customized_colors.dart';
@@ -92,10 +93,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         description: 'Already Have an account? ',
                         text: 'Login',
                         onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignInPage()));
+                          Get.offAll(() => const SignInPage());
                         },
                       ),
                     )
