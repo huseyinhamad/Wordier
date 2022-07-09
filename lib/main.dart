@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wordier/controllers/auth.dart';
-import 'package:wordier/screens/sign_up_page.dart';
+import 'package:wordier/screens/sign_in_page.dart';
 import 'package:wordier/utils/firebase_constans.dart';
 
 void main() async {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignUpPage(),
+      home: const SignInPage(),
     );
   }
 }
