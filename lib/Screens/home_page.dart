@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wordier/utils/firebase_constans.dart';
+import 'package:wordier/controllers/auth.dart';
+import 'package:wordier/widgets/auth_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,6 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  AuthController authController = AuthController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,9 +23,20 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[],
+          children: <Widget>[
+            AuthButton(
+                onTap: () => {
+                      authController.signOut(),
+                    },
+                text: "Sign-Out"),
+          ],
         ),
       ),
     );
   }
+}
+
+@override
+void dispose() {
+  authController.dispose();
 }

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../Screens/home_page.dart';
-import '../screens/sign_up_page.dart';
+import '../screens/sign_in_page.dart';
 import '../utils/firebase_constans.dart';
 
 class AuthController extends GetxController {
@@ -12,18 +12,17 @@ class AuthController extends GetxController {
   late Rx<User?> firebaseUser;
 
   @override
-  void onInit() {
-    super.onInit();
-
+  void onReady() async {
     firebaseUser = Rx<User?>(firebaseAuth.currentUser);
 
     firebaseUser.bindStream(firebaseAuth.userChanges());
-    ever(firebaseUser, _setInitialScreen);
+    ever(firebaseUser, _handleAuthChanges);
+    super.onReady();
   }
 
-  _setInitialScreen(User? user) {
+  _handleAuthChanges(user) {
     if (user == null) {
-      Get.offAll(() => const SignUpPage());
+      Get.offAll(() => const SignInPage());
     } else {
       Get.offAll(() => const HomePage());
     }
@@ -41,6 +40,13 @@ class AuthController extends GetxController {
     try {
       await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
+      // ignore: empty_catches
+    } catch (firebaseAuthException) {}
+  }
+
+  void signOut() async {
+    try {
+      await firebaseAuth.signOut();
       // ignore: empty_catches
     } catch (firebaseAuthException) {}
   }

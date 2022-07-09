@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:wordier/controllers/auth.dart';
 import 'package:wordier/screens/sign_in_page.dart';
 import 'package:wordier/styles/customized_colors.dart';
 import 'package:wordier/widgets/auth_button.dart';
+import 'package:wordier/widgets/custom_form_field.dart';
+import 'package:wordier/widgets/custom_header.dart';
+import 'package:wordier/widgets/custom_rich_text.dart';
 
-import '../widgets/custom_form_field.dart';
-import '../widgets/custom_header.dart';
-import '../widgets/custom_rich_text.dart';
+import '../utils/firebase_constans.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -16,11 +18,10 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final _userName = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  AuthController authController = AuthController();
 
-  String get userName => _userName.text.trim();
   String get email => _emailController.text.trim();
   String get password => _passwordController.text.trim();
 
@@ -81,20 +82,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     const SizedBox(height: 16),
                     AuthButton(
                       onTap: () async {
-                        try {
-                          await FirebaseAuth.instance
-                              .createUserWithEmailAndPassword(
-                            email: email,
-                            password: password,
-                          );
-                        } on FirebaseAuthException catch (e) {
-                          if (e.code == 'weak-password') {
-                            debugPrint('The password provided is too weak.');
-                          } else if (e.code == 'email-already-in-use') {
-                            debugPrint(
-                                'The account already exists for that email.');
-                          }
-                        }
+                        authController.register(email, password);
                       },
                       text: 'Sign Up',
                     ),
